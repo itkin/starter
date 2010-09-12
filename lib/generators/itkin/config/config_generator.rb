@@ -1,5 +1,11 @@
 #require 'bundler'
 #require 'bundler/cli'
+#require 'ruby-debug'
+#Debugger.start
+#if Debugger.respond_to?(:settings)
+#  Debugger.settings[:autoeval] = true
+#  Debugger.settings[:autolist] = 1
+#end
 
 module Itkin
 
@@ -10,6 +16,7 @@ module Itkin
     class_option :git, :type => :boolean, :default => true, :desc => "Use git a VCS"
 
     def add_gems
+      gem 'ruby-debug'
       gem "jquery-rails"
       gem "compass"
       gem "haml"
@@ -33,9 +40,12 @@ module Itkin
       if yes? "Install social icon ?"
         plugin "social_icons", :git => "git://github.com/itkin/social_icons.git", :submodule => options.git?
       end
+
+      git 'submodule init' if options.git?
     end
 
     def run_plugin_generators
+      require 'vendor/plugins/javascript_stuff/lib/generators/javascript_stuff/javascript_stuff_generator'
       invoke 'javascript_stuff'
     end
 
