@@ -7,7 +7,7 @@ module Itkin
 
     source_root File.expand_path('../templates', __FILE__)
 
-    class_option :git, :boolean, :default => true, :desc => "Use git a VCS"
+    class_option :git, :type => :boolean, :default => true, :desc => "Use git a VCS"
 
     def add_gems
       gem "jquery-rails"
