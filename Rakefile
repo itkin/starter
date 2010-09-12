@@ -5,11 +5,11 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "starter"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Usefull custom generators }
+#    gem.description = %Q{TODO: longer description of your gem}
     gem.email = "nicolas.papon@webflows.fr"
     gem.homepage = "http://github.com/itkin/starter"
-    gem.authors = [""]
+    gem.authors = ["Iktkin"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

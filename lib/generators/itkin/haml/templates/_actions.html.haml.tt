@@ -1,0 +1,4 @@
+.actions
+  = link_to t('actions.show'), <%= singular_name %>
+  = link_to t('actions.edit'), [:edit,<%= singular_name %>]
+  = link_to t('actions.delete'), <%= singular_name %>, :method => :delete

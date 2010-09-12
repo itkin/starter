@@ -1,6 +1,6 @@
 = starter
 
-Description goes here.
+A bunch of usefull custom generators
 
 == Note on Patches/Pull Requests
  

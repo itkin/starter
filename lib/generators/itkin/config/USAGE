@@ -1,0 +1,9 @@
+Description:
+
+
+Example:
+    rails generate config Thing
+
+    This will create:
+        #Gemfile
+

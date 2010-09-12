@@ -1,0 +1,4 @@
+=labelled_form_for @<%=singular_name%> do |f|
+  <%- for attribute in attributes -%>
+  .field= f.<%= attribute.field_type %> :<%= attribute.name %>
+  <%- end -%>
