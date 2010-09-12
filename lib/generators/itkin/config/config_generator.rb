@@ -7,6 +7,8 @@ module Itkin
 
     source_root File.expand_path('../templates', __FILE__)
 
+    class_option :git, :boolean, :default => true, :desc => "Use git a VCS"
+
     def add_gems
       gem "jquery-rails"
       gem "compass"
@@ -15,20 +17,22 @@ module Itkin
 #      ::Bundler::CLI.new.install
       invoke "jquery:install",[], :ui => true, :force => true
     end
-
+    def init_git
+      if options.git?
+        git 'init'
+      end
+    end
     def add_plugins
-      plugin "dynamic_form", :git => "git://github.com/rails/dynamic_form.git", :submodule => true
-      plugin "exception_notification", :git =>  "git://github.com/sickill/exception_notification.git", :submodule => true
-      plugin "labelled_form_for", :git => "git://github.com/itkin/labelled_form_for.git", :submodule => true
-      plugin "javascript_stuff", :git => "git://github.com/itkin/javascript_stuff.git", :submodule => true
+      plugin "dynamic_form", :git => "git://github.com/rails/dynamic_form.git", :submodule => options.git?
+      plugin "exception_notification", :git =>  "git://github.com/sickill/exception_notification.git", :submodule => options.git?
+      plugin "labelled_form_for", :git => "git://github.com/itkin/labelled_form_for.git", :submodule => options.git?
+      plugin "javascript_stuff", :git => "git://github.com/itkin/javascript_stuff.git", :submodule => options.git?
 
-      plugin "constants_in_db",  :git => "git://github.com/itkin/constants_in_db.git", :submodule => true
+      plugin "constants_in_db",  :git => "git://github.com/itkin/constants_in_db.git", :submodule => options.git?
 
       if yes? "Install social icon ?"
-        plugin "social_icons", :git => "git://github.com/itkin/social_icons.git", :submodule => true
+        plugin "social_icons", :git => "git://github.com/itkin/social_icons.git", :submodule => options.git?
       end
-
-      git "submodule init"
     end
 
     def run_plugin_generators
