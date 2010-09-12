@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{starter}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Iktkin"]
@@ -18,12 +18,6 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
-     ".idea/dictionaries/nico.xml",
-     ".idea/encodings.xml",
-     ".idea/misc.xml",
-     ".idea/modules.xml",
-     ".idea/starter.iml",
-     ".idea/vcs.xml",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -46,6 +40,7 @@ Gem::Specification.new do |s|
      "lib/generators/itkin/scaffold_controller/scaffold_controller_generator.rb",
      "lib/generators/itkin/scaffold_controller/templates/controller.rb",
      "lib/starter.rb",
+     "starter.gemspec",
      "test/helper.rb",
      "test/test_starter.rb"
   ]
