@@ -9,7 +9,7 @@ begin
 #    gem.description = %Q{TODO: longer description of your gem}
     gem.email = "nicolas.papon@webflows.fr"
     gem.homepage = "http://github.com/itkin/starter"
-    gem.authors = ["Iktkin"]
+    gem.authors = ["Itkin"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

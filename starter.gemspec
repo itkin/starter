@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Iktkin"]
+  s.authors = ["Itkin"]
   s.date = %q{2010-09-12}
   s.email = %q{nicolas.papon@webflows.fr}
   s.extra_rdoc_files = [
