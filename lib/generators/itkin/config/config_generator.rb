@@ -1,5 +1,5 @@
-require 'bundler'
-require 'bundler/cli'
+#require 'bundler'
+#require 'bundler/cli'
 
 module Itkin
 
@@ -11,8 +11,8 @@ module Itkin
       gem "jquery-rails"
       gem "compass"
       gem "haml"
-      ::Bundler.definition(true)
-      ::Bundler::CLI.new.install
+#      ::Bundler.definition(true)
+#      ::Bundler::CLI.new.install
       invoke "jquery:install",[], :ui => true, :force => true
     end
 
@@ -38,10 +38,13 @@ module Itkin
     def instructions
       say <<-END
 
+  # Run bundle install
+
+  # Run : compass init rails . --using blueprint/semantic
 
   # Don't forget to add javascript defaults file in : config.action_view.javascript_expansions
 
-  # To initialize Haml and compass, run : compass init rails . --using blueprint/semantic
+
 
 
       END
