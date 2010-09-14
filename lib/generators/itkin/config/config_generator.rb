@@ -17,7 +17,7 @@ module Itkin
 
     def add_gems
       gem 'ruby-debug'
-      gem "jquery-rails"
+      gem "jquery-rails", :git => "git://github.com/itkin/jquery-rails.git"
       gem "compass"
       gem "haml"
 #      ::Bundler.definition(true)
