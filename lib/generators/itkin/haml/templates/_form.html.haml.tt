@@ -5,4 +5,4 @@
   <%- end -%>
   .buttons
     = f.submit
-    = link_to t('actions.cancel', :default => 'cancel'), @<%=singular_name%>.new_record? ? <%=plural_name%>_path, @<%=singular_name%>
+    = link_to t('actions.cancel', :default => 'cancel'), @<%=singular_name%>.new_record? ? <%=plural_name%>_path : @<%=singular_name%>
