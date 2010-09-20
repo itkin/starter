@@ -1,9 +1,7 @@
 %div[<%=singular_name%>]
 
-  = render :partial => 'actions', :locals => { :<%=singular_name%> => <%=singular_name%> }
-
   <%- for attribute in attributes -%>
   %div
-    %label= t :<%=attribute.name%>, :scope => [:activerecord, :attributes, :<%=singular_name%>]
+    %label= t :<%=attribute.name%>, :scope => [:activerecord, :attributes, :<%=singular_name%>], :default => attribute.name
     %span= <%=singular_name%>.<%=attribute.name%>
   <%- end -%>
