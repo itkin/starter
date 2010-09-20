@@ -1,8 +1,8 @@
 =labelled_form_for @<%=singular_name%> do |f|
-  %h2= ( @@<%=singular_name%>.new_record? ? t('actions.new') : t('actions.edit') ) + t('activerecord.models.@<%=singular_name%>')
+  %h2= ( @@<%=singular_name%>.new_record? ? t('actions.new',:default => 'new') : t('actions.edit', :default => 'edit') ) + ' '+ t('activerecord.models.@<%=singular_name%>', :default => '<%=singular_name%>')
   <%- for attribute in attributes -%>
   = f.<%= attribute.field_type %> :<%= attribute.name %>
   <%- end -%>
   .buttons
     = f.submit
-    = link_to t('actions.cancel'), @<%=singular_name%>
+    = link_to t('actions.cancel', :default => 'cancel'), @<%=singular_name%>.new_record? ? <%=plural_name%>_path, @<%=singular_name%>
