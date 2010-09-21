@@ -17,6 +17,7 @@ module Itkin
     argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
     class_option :orm, :type => :boolean, :default => true
     class_option :javascript, :type => :boolean, :default => true
+    class_option :stylesheet, :type => :boolean, :default => true
     class_option :migration,  :type => :boolean
     class_option :timestamps, :type => :boolean
     class_option :parent,     :type => :string, :desc => "The parent class for the generated model"
@@ -64,9 +65,15 @@ module Itkin
       route_config << " end" * class_path.size
       route route_config
     end
+
     def create_js_files
       return unless options.javascript
       invoke 'itkin:javascript', [], :force => options.force
+    end
+
+    def create_sass_files
+      return unless options.stylesheet
+      invoke 'itkin:sass', [], :force => options.force
     end
 
     protected
@@ -74,14 +81,17 @@ module Itkin
       def parent_class_name
         options[:parent] || "ActiveRecord::Base"
       end
+
       def assign_names!(name) #:nodoc:
         super
         @class_name = file_name.camelize
         @class_name_with_namespace = (class_path + [file_name]).map!{ |m| m.camelize }.join('::')
       end
+
       def class_name
         @class_name
       end
+
       def class_name_with_namespace
         @class_name_with_namespace
       end
