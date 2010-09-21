@@ -1,7 +1,7 @@
 class <%= controller_class_name %>Controller < ApplicationController
 
   def index
-    @<%= plural_name %> = <%= class_name %>.search(params[:search])
+    @<%= plural_name %> = <%= class_name %>.search(params[:search]).paginate(:per_page =>10, :page => params[:page])
   end
 
   def show
