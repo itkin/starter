@@ -1,7 +1,0 @@
-%div[<%=singular_name%>]
-
-  <%- for attribute in attributes -%>
-  %div
-    %label= t :<%=attribute.name%>, :scope => [:activerecord, :attributes, :<%=singular_name%>], :default => attribute.name
-    %span= <%=singular_name%>.<%=attribute.name%>
-  <%- end -%>
