@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{starter}
-  s.version = "0.0.6"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Itkin"]
-  s.date = %q{2010-09-12}
+  s.date = %q{2010-09-21}
   s.email = %q{nicolas.papon@webflows.fr}
   s.extra_rdoc_files = [
     "LICENSE",
