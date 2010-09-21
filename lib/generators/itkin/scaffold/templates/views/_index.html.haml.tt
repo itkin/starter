@@ -1,0 +1,2 @@
+%ul
+  = render :partial => 'item', :collection => @<%=plural_name%>, :as => :<%=singular_name%>
