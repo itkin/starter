@@ -54,8 +54,16 @@ module Itkin
     end
 
     def create_view_files
-      directory 'views', File.join('app/views', file_name.pluralize)
+      directory 'views', File.join('app/views', class_path, file_name.pluralize)
     end
+
+    def add_resource_route
+      route_config =  class_path.collect{|namespace| "namespace :#{namespace} do " }.join(" ")
+      route_config << "resources :#{file_name.pluralize}"
+      route_config << " end" * class_path.size
+      route route_config
+    end
+
 
     protected
 
