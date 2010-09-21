@@ -1,0 +1,1 @@
+= render :partial => 'item', :locals => { :<%=singular_name%> => @<%=singular_name%> }

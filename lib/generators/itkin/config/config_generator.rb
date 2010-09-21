@@ -17,9 +17,10 @@ module Itkin
 
     def add_gems
       gem 'ruby-debug'
-      gem "jquery-rails"
+      gem "jquery-rails", :git => "git://github.com/itkin/jquery-rails.git"
       gem "compass"
       gem "haml"
+      gem "will_paginate"
 #      ::Bundler.definition(true)
 #      ::Bundler::CLI.new.install
       invoke "jquery:install",[], :ui => true, :force => true
@@ -33,7 +34,6 @@ module Itkin
       plugin "dynamic_form", :git => "git://github.com/rails/dynamic_form.git", :submodule => options.git?
       plugin "exception_notification", :git =>  "git://github.com/sickill/exception_notification.git", :submodule => options.git?
       plugin "labelled_form_for", :git => "git://github.com/itkin/labelled_form_for.git", :submodule => options.git?
-      plugin "javascript_stuff", :git => "git://github.com/itkin/javascript_stuff.git", :submodule => options.git?
 
       plugin "constants_in_db",  :git => "git://github.com/itkin/constants_in_db.git", :submodule => options.git?
 
@@ -42,11 +42,6 @@ module Itkin
       end
 
       git 'submodule init' if options.git?
-    end
-
-    def run_plugin_generators
-      require 'vendor/plugins/javascript_stuff/lib/generators/javascript_stuff/javascript_stuff_generator'
-      invoke 'javascript_stuff'
     end
 
     def instructions
