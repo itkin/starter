@@ -1,2 +1,9 @@
-%ul
-  = render :partial => 'item', :collection => @<%=plural_name%>, :as => :<%=singular_name%>
+.options
+  = text_field_tag :search, nil, :class => 'search', 'data-source' => <%=index_route%>
+  = link_to t("actions.new", :default => 'new'), [:new, <%= class_path.to_s.to_sym%>, :<%= singular_name%>], :class=> 'new'
+
+.list-wrapper
+  %ul
+    = render :partial => 'item', :collection => @<%=plural_name%>, :as => :<%=singular_name%>
+
+  = will_paginate @<%=plural_name%>

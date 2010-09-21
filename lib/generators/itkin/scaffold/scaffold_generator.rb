@@ -53,6 +53,10 @@ module Itkin
       template 'test/functional.rb', File.join('test/functional', class_path, "#{controller_file_name}_controller_test.rb")
     end
 
+    def create_view_files
+      directory 'views', File.join('app/views', file_name.pluralize)
+    end
+
     protected
 
       def parent_class_name
@@ -70,7 +74,9 @@ module Itkin
         @class_name_with_namespace
       end
 
-
+      def index_route
+        @index_route = (class_path + [plural_name]+['path']).join('_')
+      end
 
   end
 end
