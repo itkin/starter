@@ -16,6 +16,7 @@ module Itkin
 
     argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
     class_option :orm, :type => :boolean, :default => true
+    class_option :javascript, :type => :boolean, :default => true
     class_option :migration,  :type => :boolean
     class_option :timestamps, :type => :boolean
     class_option :parent,     :type => :string, :desc => "The parent class for the generated model"
@@ -63,7 +64,10 @@ module Itkin
       route_config << " end" * class_path.size
       route route_config
     end
-
+    def create_js_files
+      return unless options.javascript
+      invoke 'itkin:javascript', [], :force => options.force
+    end
 
     protected
 
