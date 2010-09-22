@@ -11,19 +11,20 @@ module Itkin
     desc "Itkin custom ajax scaffold"
 
     include Rails::Generators::ResourceHelpers
+    include Rails::Generators::Migration
 
     source_root File.expand_path('../templates', __FILE__)
 
     argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
     class_option :orm, :type => :boolean, :default => true
-    class_option :javascript, :type => :boolean, :default => true
-    class_option :stylesheet, :type => :boolean, :default => true
-    class_option :migration,  :type => :boolean
+    class_option :javascript, :type => :boolean, :default => false
+    class_option :stylesheet, :type => :boolean, :default => false
+    class_option :migration,  :type => :boolean, :default => true
     class_option :timestamps, :type => :boolean
     class_option :parent,     :type => :string, :desc => "The parent class for the generated model"
 
     def create_migration_file
-      return unless options[:orm] and options[:migration] && options[:parent].nil?
+      return if not options[:orm] or not options[:migration] or options[:parent]
       migration_template "migration.rb", "db/migrate/create_#{table_name}.rb"
     end
 
@@ -95,6 +96,23 @@ module Itkin
       def class_name_with_namespace
         @class_name_with_namespace
       end
+
+      # Implement the required interface for Rails::Generators::Migration.
+      def self.next_migration_number(dirname) #:nodoc:
+        next_migration_number = current_migration_number(dirname) + 1
+        if ActiveRecord::Base.timestamped_migrations
+          [Time.now.utc.strftime("%Y%m%d%H%M%S"), "%.14d" % next_migration_number].max
+        else
+          "%.3d" % next_migration_number
+        end
+      end
+
+      def table_name
+        @table_name ||= begin
+          pluralize_table_names? ? plural_name : singular_name
+        end
+      end
+
 
       def named_route(action=nil, plural=nil)
         if action.to_s == "index" or plural
