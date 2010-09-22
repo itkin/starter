@@ -2,6 +2,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   def index
     @<%= plural_name %> = <%= class_name %>.search(params[:search]).paginate(:per_page =>10, :page => params[:page])
+    render :action => :index
   end
 
   def show
@@ -42,9 +43,9 @@ class <%= controller_class_name %>Controller < ApplicationController
     @<%= singular_name %> = <%= class_name %>.find(params[:id])
     if @<%= singular_name %>.destroy
       flash.now[:notice] = "<%= human_name %> a été détruit"
-      render :action => :index
+      index
     else
-      flash.now[:notice] = "<%= human_name %> n'a pas pu être détruit"
+      flash.now[:warning] = "<%= human_name %> n'a pas pu être détruit"
       render :text => nil
     end
   end
