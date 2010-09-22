@@ -16,7 +16,7 @@ module Itkin
     source_root File.expand_path('../templates', __FILE__)
 
     argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
-    class_option :orm, :type => :boolean, :default => true
+    class_option :model, :type => :boolean, :default => true
     class_option :javascript, :type => :boolean, :default => false
     class_option :stylesheet, :type => :boolean, :default => false
     class_option :migration,  :type => :boolean, :default => true
@@ -24,22 +24,22 @@ module Itkin
     class_option :parent,     :type => :string, :desc => "The parent class for the generated model"
 
     def create_migration_file
-      return if not options[:orm] or not options[:migration] or options[:parent]
+      return if not options[:model] or not options[:migration] or options[:parent]
       migration_template "migration.rb", "db/migrate/create_#{table_name}.rb"
     end
 
     def create_model_file
-      return unless options[:orm]
+      return unless options[:model]
       template 'model.rb', File.join('app/models',  "#{file_name}.rb")
     end
 
     def create_fixtures_file
-      return unless options[:orm]
+      return unless options[:model]
       template 'test/fixtures.yml', File.join('test/fixtures', "#{file_name.pluralize}.yml")
     end
 
     def create_unit_test_file
-      return unless options[:orm]
+      return unless options[:model]
       template 'test/unit.rb', File.join('test/unit', "#{file_name}_test.rb")
     end
 
