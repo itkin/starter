@@ -96,8 +96,14 @@ module Itkin
         @class_name_with_namespace
       end
 
-      def index_route
-        @index_route = (class_path + [plural_name]+['path']).join('_')
+      def named_route(action=nil, plural=nil)
+        if action.to_s == "index" or plural
+          (class_path + [plural_name]+['path']).compact.join('_')
+        else
+          action = nil if ['destroy', 'show'].include?(action.to_s)
+          ([action] + class_path + [singular_name]+['path']).compact.join('_')
+        end
+
       end
 
   end

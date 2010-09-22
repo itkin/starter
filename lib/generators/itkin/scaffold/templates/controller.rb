@@ -13,7 +13,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   end
 
   def edit
-    @<%= plural_name %> = <%= class_name %>.find(params[:id])
+    @<%= singular_name %> = <%= class_name %>.find(params[:id])
   end
 
   def create
